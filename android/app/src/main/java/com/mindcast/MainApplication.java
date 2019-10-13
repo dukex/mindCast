@@ -37,7 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new RNFSPackage(),
             new ReactVideoPackage(),
-            new FastImageViewPackage()
+            new FastImageViewPackage(),
+            new AppConfigPackage()
       );
     }
 
