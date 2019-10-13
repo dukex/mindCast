@@ -10,12 +10,14 @@ import { connect } from 'react-redux';
 import { Creators as PlayerCreators } from '~/store/ducks/player';
 import { Creators as LocalPodcastsManagerCreators } from '~/store/ducks/localPodcastsManager';
 import { Creators as PlaylistsCreators } from '~/store/ducks/playlist';
+import { Creators as AppConfigCreators } from '~/store/ducks/appConfig';
 
 import CONSTANTS from '~/utils/CONSTANTS';
 
 type Props = {
-  loadPodcastsRecentlyPlayed: Function,
+  setAppConfig: Function,
   setPodcastsDownloadedList: Function,
+  loadPodcastsRecentlyPlayed: Function,
   loadPlaylists: Function,
   navigation: Object,
 };
@@ -23,16 +25,16 @@ type Props = {
 class StaterScreen extends Component<Props, {}> {
   componentDidMount() {
     const {
-      loadPodcastsRecentlyPlayed,
+      setAppConfig,
       setPodcastsDownloadedList,
+      loadPodcastsRecentlyPlayed,
       loadPlaylists,
       navigation,
     } = this.props;
 
+    setAppConfig();
     setPodcastsDownloadedList();
-
     loadPodcastsRecentlyPlayed();
-
     loadPlaylists();
 
     this.loadImages();
@@ -86,6 +88,7 @@ class StaterScreen extends Component<Props, {}> {
 
 const Creators = Object.assign(
   {},
+  AppConfigCreators,
   LocalPodcastsManagerCreators,
   PlaylistsCreators,
   PlayerCreators,

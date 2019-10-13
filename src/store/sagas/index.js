@@ -6,6 +6,7 @@ import { Types as SubjectTypes } from '../ducks/subject';
 import { Types as PlayerTypes } from '../ducks/player';
 import { Types as AuthorTypes } from '../ducks/author';
 import { Types as HomeTypes } from '../ducks/home';
+import { Types as AppConfigTypes } from '../ducks/appConfig';
 
 import {
   clearAllLocalPodcastsReferences,
@@ -26,6 +27,7 @@ import {
 } from './player';
 import { searchAuthorByName, getAuthorById } from './author';
 import { getSubjectDetail } from './subject';
+import { setAppConfig } from './appConfig';
 import {
   createPlaylist,
   loadPlaylists,
@@ -89,5 +91,6 @@ export default function* rootSaga() {
       PlaylistTypes.SET_AVAILABLE_OFFLINE_REQUEST,
       setOfflineAvailability,
     ),
+    takeLatest(AppConfigTypes.SET_APP_CONFIG_REQUEST, setAppConfig),
   ]);
 }

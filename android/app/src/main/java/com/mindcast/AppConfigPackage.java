@@ -9,22 +9,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-
 public class AppConfigPackage implements ReactPackage {
-    @Nonnull
     @Override
-    public List<NativeModule> createNativeModules(@Nonnull ReactApplicationContext reactContext) {
+    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List<NativeModule> createNativeModules(
+            ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
 
         modules.add(new AppConfig(reactContext));
 
         return modules;
-    }
-
-    @Nonnull
-    @Override
-    public List<ViewManager> createViewManagers(@Nonnull ReactApplicationContext reactContext) {
-        return Collections.emptyList();
     }
 }

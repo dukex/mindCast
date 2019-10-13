@@ -1,52 +1,39 @@
 package com.mindcast;
 
+import android.widget.Toast;
+
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Nonnull;
 
 public class AppConfig extends ReactContextBaseJavaModule {
-
-    @Nonnull
     private final String appName;
+    private final String appUid;
 
-    public AppConfig(@Nonnull ReactApplicationContext reactContext) {
-        super(reactContext);
-
-        this.appName = reactContext
-                .getApplicationContext()
-                .getResources()
-                .getString(R.string.app_name);
+    AppConfig(ReactApplicationContext context) {
+        super(context);
+        appName = getReactApplicationContext().getResources().getString(R.string.app_name);
+        appUid = getReactApplicationContext().getResources().getString(R.string.app_uid);
     }
 
-    @Nonnull
     @Override
     public String getName() {
         return "AppConfig";
     }
 
-    @Nonnull
-    @ReactMethod(isBlockingSynchronousMethod = true)
-    public String getAppName() {
-        return appName;
+    @ReactMethod
+    public void appName(Promise promise) {
+        promise.resolve(appName);
     }
 
-    @Nonnull
-    @ReactMethod(isBlockingSynchronousMethod = true)
-    public String getPrimaryColor() {
-        return "#fdf6e3";
-    }
-
-    @Nonnull
-    @ReactMethod(isBlockingSynchronousMethod = true)
-    public String getPrimaryTextColor() {
-        return "#657b83";
-    }
-
-    @Nonnull
-    @ReactMethod(isBlockingSynchronousMethod = true)
-    public String getGreetingText() {
-        return "Welcome";
+    @ReactMethod
+    public void appUid(Promise promise) {
+        promise.resolve(appUid);
     }
 }
