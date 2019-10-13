@@ -37,7 +37,7 @@ class StaterScreen extends Component<Props, {}> {
     loadPodcastsRecentlyPlayed();
     loadPlaylists();
 
-    this.loadImages();
+    // this.loadImages();
 
     SplashScreen.hide();
 

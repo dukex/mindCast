@@ -59,7 +59,9 @@ class Login extends Component<Props, {}> {
   onNavigateToMainStack = (): void => {
     const { navigation } = this.props;
 
-    navigation.navigate(CONSTANTS.ROUTES.INTERESTS);
+    // navigation.navigate(CONSTANTS.ROUTES.INTERESTS);
+
+    navigation.navigate(CONSTANTS.ROUTES.MAIN_STACK);
   };
 
   createFadeAnimationStyle = (animation: Object): Object => {
